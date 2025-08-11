@@ -17,11 +17,11 @@ jobs:
       with:
         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        aws-region: us-east-1
+        aws-region: ap-southeast-2
         
     - name: Sync files to S3
       run: |
-        aws s3 sync ./ s3://maryboroughmowerman --delete --exact-timestamps --exclude ".github/*" --exclude "aws-website-config.json" --exclude "cloudformation-www-redirect.yaml"
+        aws s3 sync ./maryboroughmowerman s3://maryboroughmowerman --delete --exact-timestamps
         
     - name: Apply S3 website configuration
       run: |
