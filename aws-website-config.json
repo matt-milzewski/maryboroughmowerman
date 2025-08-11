@@ -1,0 +1,21 @@
+{
+  "IndexDocument": {
+    "Suffix": "index.html"
+  },
+  "ErrorDocument": {
+    "Key": "404.html"
+  },
+  "RoutingRules": [
+    {
+      "Condition": {
+        "KeyPrefixEquals": "index.html"
+      },
+      "Redirect": {
+        "Protocol": "https",
+        "HostName": "maryboroughmowerman.com.au",
+        "ReplaceKeyWith": "",
+        "HttpRedirectCode": "301"
+      }
+    }
+  ]
+}
