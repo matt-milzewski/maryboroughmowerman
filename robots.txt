@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /index.html
+
+Sitemap: https://maryboroughmowerman.com.au/sitemap.xml
