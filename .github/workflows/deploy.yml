@@ -21,7 +21,8 @@ jobs:
         
     - name: Sync files to S3
       run: |
-        aws s3 sync ./maryboroughmowerman s3://maryboroughmowerman --delete --exact-timestamps
+        cd maryboroughmowerman
+        aws s3 sync ./ s3://maryboroughmowerman --delete --exact-timestamps --exclude ".github/*"
         
     - name: Apply S3 website configuration
       run: |
