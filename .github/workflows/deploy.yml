@@ -21,7 +21,11 @@ jobs:
         
     - name: Sync files to S3
       run: |
-        aws s3 sync ./ s3://maryboroughmowerman --delete --exact-timestamps --exclude ".github/*"
+        aws s3 sync ./ s3://maryboroughmowerman --delete --exact-timestamps --exclude ".github/*" --exclude "aws-website-config.json" --exclude "cloudformation-www-redirect.yaml"
+        
+    - name: Apply S3 website configuration
+      run: |
+        aws s3api put-bucket-website --bucket maryboroughmowerman --website-configuration file://aws-website-config.json
         
     - name: Invalidate CloudFront
       run: |
