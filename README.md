@@ -4,27 +4,34 @@ A professional, mobile-first static website for The Maryborough Mower Man lawn c
 
 ## 🚀 Quick Start
 
-1. **Formspree Setup**
-   - Replace the Formspree ID in `index.html` with your own
-   - Find the form action URL and update it to your Formspree endpoint
+1. **Local Preview**
 
-2. **Images**
-   - Replace placeholder images in `/images` with real photos
-   - Ensure all images are optimized for web
-   - Required images:
-     - `hero-lawn.jpg` (hero section)
-     - `og-hero.jpg` (social sharing)
-     - Service icons (SVG format)
+   ```bash
+   python3 -m http.server 4173
+   ```
 
-3. **Deployment**
+   Open `http://127.0.0.1:4173/`.
+
+2. **Formspree**
+   - The contact form posts to the Formspree endpoint in `index.html`
+   - Keep the phone number and email visible as a fallback if Formspree rejects a request
+
+3. **Images**
+   - `hero-lawn.jpg` is the JPEG fallback hero image
+   - `hero-lawn.webp` is the optimized hero image used by browsers that support WebP
+   - `og-hero.jpg` is the 1200 x 630 social sharing image
+   - `favicon-mower.png` is the browser icon
+
+4. **Deployment**
    - Upload the entire directory to an AWS S3 bucket
    - Enable "Static website hosting" in bucket settings
    - Configure bucket policy for public access
 
-4. **Optional: HTTPS Setup**
+5. **Optional: HTTPS Setup**
    - Set up Route 53 for domain management
    - Configure CloudFront distribution
    - Point domain to CloudFront distribution
+   - Redirect `www.maryboroughmowerman.com.au` to `maryboroughmowerman.com.au` at CloudFront or Route 53/S3 website endpoint level
 
 ## 🛠️ Technical Details
 
@@ -43,7 +50,7 @@ A professional, mobile-first static website for The Maryborough Mower Man lawn c
 ├── 404.html           # Custom 404 page
 ├── style.css          # Main stylesheet
 ├── scripts.js         # JavaScript functionality
-├── images/            # Image assets
+├── images/            # Optimized image assets
 └── README.md          # This file
 ```
 
@@ -70,6 +77,7 @@ A professional, mobile-first static website for The Maryborough Mower Man lawn c
 - Form submissions handled via Formspree
 - No sensitive data stored
 - HTTPS recommended for production
+- `.git`, `.github`, `.DS_Store`, `.gitignore`, `README.md`, and deployment config are excluded from S3 uploads
 
 ## 📱 Features
 
@@ -84,4 +92,4 @@ A professional, mobile-first static website for The Maryborough Mower Man lawn c
 
 ## 📄 License
 
-© 2024 The Maryborough Mower Man. All rights reserved. 
+© 2024 The Maryborough Mower Man. All rights reserved.
